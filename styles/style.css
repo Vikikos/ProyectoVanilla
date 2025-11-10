@@ -1,0 +1,11 @@
+body{
+
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#formUser{
+    display: none;
+    text-align: center;
+}
