@@ -4,8 +4,21 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    text-align: center;
+
 }
 #formUser{
     display: none;
-    text-align: center;
+}
+.a__button{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 2em;
+    padding: 1em;
+    border: 1px solid #000;
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
 }

@@ -1,6 +1,7 @@
-    // localStorage.removeItem('userData2');
-    // localStorage.removeItem('usersCont');
-    // localStorage.removeItem('sessionId');
+    /*localStorage.removeItem('userData3');
+    localStorage.removeItem('usersCont');
+    localStorage.removeItem('sessionId');*/
+
 document.getElementById('userName').addEventListener('blur',function (){
     var value = this.value;
     if(value){
@@ -29,11 +30,14 @@ document.getElementById('userName').addEventListener('blur',function (){
             if(noExists){
                 //si no existe el usuario lo creamos
                 let idUser = 'userData' + (userCont+1);
+                //obtenemos la fecha actual
+                let userDate = getDate();
+                let userTime = getTime();
                 let userData = {
                     id: (userCont+1),
-                    username: value,
-                    day:'',
-                    time:'',
+                    usermail: value,
+                    day:userDate,
+                    time:userTime,
                 };
                 //creamos al usuario
                 localStorage.setItem(idUser, JSON.stringify(userData));
@@ -49,13 +53,16 @@ document.getElementById('userName').addEventListener('blur',function (){
 
             //iniciamos la variable contador de usuarios
             localStorage.setItem('usersCont',1);
+            //obtenemos la fecha actual
+            let userDate = getDate();
+            let userTime = getTime();
             
             //creamos usuario con id 1 por ser el primero
             let userData = {
                 id: 1,
-                username: value,
-                day:'',
-                time:'',
+                usermail: value,
+                day:userDate,
+                time:userTime,
             };
             //creamos al usuario
             localStorage.setItem("userData1", JSON.stringify(userData));
@@ -70,3 +77,4 @@ document.getElementById('userName').addEventListener('blur',function (){
         console.log('vacio')
     }
 });
+
