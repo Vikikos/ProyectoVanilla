@@ -9,21 +9,21 @@
 <body>
     
     <main class="main__formPreguntas">
-        <form action="">
+        <form action="" id="questForm">
             <label for="question">Pregunta </label>
-            <input type="text" name="question" id="question"><br>
+            <input type="text" name="question" id="question" class="input"><br>
 
             <label for="iTrue">Verdadero</label>
-            <input type="radio" name="answer" id="iTrue" value="true">
+            <input type="radio" name="answer" id="iTrue" value="true" class="input">
 
             <label for="iFalse">False</label>
-            <input type="radio" name="answer" id="iFalse" value="false"><br>
+            <input type="radio" name="answer" id="iFalse" value="false" class="input"><br>
             
             <label for="score">Puntuación</label>
-            <input type="text" name="score" id="score">
+            <input type="text" name="score" id="score" class="input">
             <div>
-                <input type="button" value="Atras">
-                <input type="button" value="Grabar" id="saveButton">
+                <input type="reset" value="Atras">
+                <input type="button" value="Grabar" id="saveButton" disabled>
             </div>
             
         </form>
@@ -38,6 +38,7 @@
         </table>
     </main>
     <script src="/scripts/pantalla3.js"></script>
+    <script src="/scripts/saveQuestion.js"></script>
 
 </body>
 </html>

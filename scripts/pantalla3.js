@@ -1,5 +1,4 @@
 function getCuestions(delay = false) {
-    console.log('si entra')
     let delayTime = 0;
     if(delay){
         delayTime = 5000;
