@@ -8,24 +8,36 @@
 </head>
 <body>
     
-    <main>
+    <main class="main__formPreguntas">
         <form action="">
             <label for="question">Pregunta </label>
             <input type="text" name="question" id="question"><br>
 
-            <label for="answer">Verdadero</label>
+            <label for="iTrue">Verdadero</label>
             <input type="radio" name="answer" id="iTrue" value="true">
 
-            <label for="answer">False</label>
-            <input type="radio" name="answer" id="iFalse" value="false">
+            <label for="iFalse">False</label>
+            <input type="radio" name="answer" id="iFalse" value="false"><br>
             
             <label for="score">Puntuación</label>
             <input type="text" name="score" id="score">
-            <a href=""></a>
+            <div>
+                <input type="button" value="Atras">
+                <input type="button" value="Grabar" id="saveButton">
+            </div>
+            
         </form>
-        <table></table>
+        <table>
+            <tr>
+                <th>Pregunta</th>
+                <th>Respuesta</th>
+                <th>Puntuacion</th>
+                <th>Estado</th>
+            </tr>
+            <tr id="noQuest"></tr>
+        </table>
     </main>
-    
+    <script src="/scripts/pantalla3.js"></script>
 
 </body>
 </html>

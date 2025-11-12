@@ -8,6 +8,15 @@ body{
     text-align: center;
 
 }
+.main__formPreguntas{
+    display: flex;
+    flex-direction: row;
+    
+    table{
+        border: 1px solid #7c7a7a;
+    }
+
+}
 #formUser{
     display: none;
 }
