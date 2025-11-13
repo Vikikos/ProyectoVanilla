@@ -1,6 +1,7 @@
     // localStorage.removeItem('userData2');
     // localStorage.removeItem('usersCont');
     // localStorage.removeItem('sessionId');
+    //cambiar esto si me da tiempo
 let correctEmail = (email) =>{
     //validar el email
     let dot = email.lastIndexOf('.');//localizamos el ultimo punto
@@ -19,26 +20,6 @@ let correctEmail = (email) =>{
     }else{
         return false;
     }
-}
-let getDate = () => {
-    let date = new Date();
-
-    let yyyy = date.getFullYear();
-    let mm = date.getMonth() + 1;
-    let dd = date.getDate();
-
-    formatDate = dd + '/' + mm + '/' + yyyy;
-    return formatDate;
-}
-
-let getTime = () =>{
-    let date = new Date() 
-    hh = date.getHours() 
-    mm = date.getMinutes() 
-    ss = date.getSeconds() 
-
-    dateUser = hh + ':' + mm + ':' + ss;
-    return dateUser
 }
 document.getElementById('userName').addEventListener('blur',function (){
     //pierde el foco
@@ -60,7 +41,7 @@ document.getElementById('userName').addEventListener('blur',function (){
                     //obtenemos los datos de ese usuario
                     const savedUserData = JSON.parse(localStorage.getItem(idUser));
 
-                    if(savedUserData['username'] === value){
+                    if(savedUserData['usermail'] === value){
                         //si ya existe 
                         localStorage.setItem('sessionId', savedUserData['id']);
                         noExists = false;

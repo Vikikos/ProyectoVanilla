@@ -10,6 +10,7 @@
     
     <main class="main__formPreguntas">
         <form action="" id="questForm">
+            <div id="errorText"></div>
             <label for="question">Pregunta </label>
             <input type="text" name="question" id="question" class="input"><br>
 
@@ -22,19 +23,19 @@
             <label for="score">Puntuación</label>
             <input type="text" name="score" id="score" class="input">
             <div>
-                <input type="reset" value="Atras">
-                <input type="button" value="Grabar" id="saveButton" disabled>
+                <input type="reset" value="Atras" id="goBackButton">
+                <input type="submit" value="Grabar" id="saveButton" disabled>
             </div>
             
         </form>
-        <table>
+        <table id="questtable">
             <tr>
                 <th>Pregunta</th>
                 <th>Respuesta</th>
                 <th>Puntuacion</th>
                 <th>Estado</th>
             </tr>
-            <tr id="noQuest"></tr>
+            <tr id="noQuest"><td colspan="4">----------------------------------------------------------------------</td></tr>
         </table>
     </main>
     <script src="/scripts/pantalla3.js"></script>
