@@ -2,6 +2,7 @@ let prueba = {
     id: 1,
     text: 'texto',
 };
+
 let arrayPre1 =[];
 arrayPre1.push(prueba)
 localStorage.setItem("preguntas", JSON.stringify(arrayPre1));
@@ -16,7 +17,7 @@ let prueba3 = {
 };
 const preguntas = JSON.parse(localStorage.getItem('preguntas'));
 
- arrayPre  = [preguntas];
+arrayPre  = [preguntas];
 
 arrayPre.push(prueba2);
 arrayPre.push(prueba3);

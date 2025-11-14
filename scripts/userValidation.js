@@ -1,7 +1,3 @@
-    // localStorage.removeItem('userData2');
-    // localStorage.removeItem('usersCont');
-    // localStorage.removeItem('sessionId');
-    //cambiar esto si me da tiempo
 let correctEmail = (email) =>{
     //validar el email
     let dot = email.lastIndexOf('.');//localizamos el ultimo punto
@@ -15,89 +11,73 @@ let correctEmail = (email) =>{
             //si no hay caracteres en alguna
             return false;
         }else{
+            //hay caracteres
             return true;
         }
     }else{
         return false;
     }
 }
+
 document.getElementById('userName').addEventListener('blur',function (){
-    //pierde el foco
+    //obtenemos el email
     var value = this.value;
     if(value){
-        //si hay texto en input
-        let emailC = correctEmail(value);//guardamos la respuyesta de si es correcto o no
-        console.log(emailC)
+        //tiene texto
+        let emailC = correctEmail(value);//comprobamos que el formato es correcto
         if(emailC){
-            //si es correcto
-            var userCont = parseInt( localStorage.getItem('usersCont'));
-            if(userCont){
-                let noExists = false;
-                //si hay usuarios
-                for (let i = 1; i <= userCont; i++) {
-                    //recoremos todos los usuarios existentes
-                    let idUser = 'userData' + i;//nombre de la variable
-
-                    //obtenemos los datos de ese usuario
-                    const savedUserData = JSON.parse(localStorage.getItem(idUser));
-
-                    if(savedUserData['usermail'] === value){
-                        //si ya existe 
-                        localStorage.setItem('sessionId', savedUserData['id']);
-                        noExists = false;
+            //formato correcto
+            //obtenemos los usuarios
+            var users = JSON.parse(localStorage.getItem('users'));
+            if(users){
+                //hay usuarios
+                let exists = false;
+                let arrayUsers = users;
+                for (const user of arrayUsers) {
+                    if(user['mail'] === value){
+                        //si ya existe
+                        //establecemos la sesios actual
+                        localStorage.setItem('sessionUser', value);
+                        exists = true;
                         break;
-                    }else{
-                        noExists = true;
                     }
                 }
-                if(noExists){
-                    //si no existe el usuario lo creamos
-                    let idUser = 'userData' + (userCont+1);
-                    //obtenemos la fecha actual
+                if(!exists){
+                    //no existe
+                    //creamos
                     let userDate = getDate();
                     let userTime = getTime();
                     let userData = {
-                        id: (userCont+1),
-                        usermail: value,
-                        day:userDate,
-                        time:userTime,
+                        "mail": value,
+                        "day":userDate,
+                        "time":userTime,
                     };
-                    //creamos al usuario
-                    localStorage.setItem(idUser, JSON.stringify(userData));
-                    //establecemos que el usuario actual con el id
-                    localStorage.setItem('sessionId', (userCont+1));
-                    //sumamos el count de usuarios
-                    localStorage.setItem('usersCont',(userCont+1));
+                    arrayUsers.push(userData);
+                    //guardamos
+                    localStorage.setItem('users', JSON.stringify(arrayUsers));
+                    localStorage.setItem('sessionUser', value);
                 }
+                //redirige
+                window.location.href = '/pantalla2.html';
             }else{
-                //si no hay ningun usuario
-
-                //iniciamos la variable contador de usuarios
-                localStorage.setItem('usersCont',1);
-                //obtenemos la fecha actual
+                //no hay usuarios este es el primero
                 let userDate = getDate();
                 let userTime = getTime();
-                
-                //creamos usuario con id 1 por ser el primero
-                let userData = {
-                    id: 1,
-                    usermail: value,
-                    day:userDate,
-                    time:userTime,
+                let userDataNew = {
+                    "mail": value,
+                    "day":userDate,
+                    "time":userTime,
                 };
-                //creamos al usuario
-                localStorage.setItem("userData1", JSON.stringify(userData));
-                //establecemos que el usuario actual con el id
-                localStorage.setItem('sessionId', 1);
+                let arrayNewUser = [];
+                arrayNewUser.push(userDataNew);
+                localStorage.setItem('users', JSON.stringify(arrayNewUser));
+                localStorage.setItem('sessionUser', value);
             }
-            //siempre redirige
-            window.location.href = '/pantalla2.html';
         }else{
-            //no es correcto
-            document.getElementById('emailAnswer').textContent = 'Correo incorrecto';
+            document.getElementById('emailAnswer').textContent = 'Error de formato (ejemplo@mail.com)';
         }
     }else{
-        //si no hay texto en input
-        console.log('vacio')
+        //esta vacio
+        document.getElementById('emailAnswer').textContent = 'Debes rellenar el campo';
     }
 });
