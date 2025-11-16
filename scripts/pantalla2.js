@@ -22,9 +22,3 @@ for (const us of users) {
 }
 localStorage.setItem('users',JSON.stringify(users));
 
-let testButton = document.getElementById('testButton');
-if(user['questions'].length > 0){
-    // hay preguntas, activamos el boton
-    testButton.setAttribute('href','pantalla4.html');
-    testButton.classList.remove('disabled-button')
-}
