@@ -75,6 +75,7 @@ document.getElementById('userName').addEventListener('blur',function (){
             }
             window.location.href = '/pantalla2.html';
         }else{
+            this.select();
             document.getElementById('emailAnswer').textContent = 'Error de formato (ejemplo@mail.com)';
         }
     }else{
