@@ -11,17 +11,25 @@
     <main class="main__formPreguntas">
         <form action="" id="questForm">
             <div id="errorText"></div>
-            <label for="question">Pregunta </label>
-            <input type="text" name="question" id="question" class="input"><br>
-
-            <label for="iTrue">Verdadero</label>
-            <input type="radio" name="answer" id="iTrue" value="true" class="input">
-
-            <label for="iFalse">False</label>
-            <input type="radio" name="answer" id="iFalse" value="false" class="input"><br>
+            <div>
+               <label for="question">Pregunta </label>
+                <input type="text" name="question" id="question" class="input">
+            </div>
             
-            <label for="score">Puntuación</label>
-            <input type="text" name="score" id="score" class="input">
+            <div>
+                <div>
+                    <label for="iTrue">Verdadero</label>
+                    <input type="radio" name="answer" id="iTrue" value="true" class="input"> 
+                </div>
+                <div>
+                    <label for="iFalse">False</label>
+                    <input type="radio" name="answer" id="iFalse" value="false" class="input">
+                </div>
+            </div>
+            <div>
+                <label for="score">Puntuación</label>
+                <input type="text" name="score" id="score" class="input" maxlength="1">  
+            </div>
             <div>
                 <input type="reset" value="Atras" id="goBackButton">
                 <input type="submit" value="Grabar" id="saveButton" disabled>
@@ -35,8 +43,9 @@
                 <th>Puntuacion</th>
                 <th>Estado</th>
             </tr>
-            <tr id="noQuest"><td colspan="4">----------------------------------------------------------------------</td></tr>
+            <tr><td colspan="4">----------------------------------------------------------------------</td></tr>
         </table>
+        <div id="noQuest"></div>
     </main>
     <script src="/scripts/pantalla3.js"></script>
     <script src="/scripts/saveQuestion.js"></script>

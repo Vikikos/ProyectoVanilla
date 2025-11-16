@@ -37,7 +37,7 @@ document.getElementById('userName').addEventListener('blur',function (){
                     if(user['mail'] === value){
                         //si ya existe
                         //establecemos la sesios actual
-                        localStorage.setItem('sessionUser', value);
+                        localStorage.setItem('sessionUser', JSON.stringify(user));
                         exists = true;
                         break;
                     }
@@ -51,14 +51,13 @@ document.getElementById('userName').addEventListener('blur',function (){
                         "mail": value,
                         "day":userDate,
                         "time":userTime,
+                        "questions":[],
                     };
                     arrayUsers.push(userData);
                     //guardamos
                     localStorage.setItem('users', JSON.stringify(arrayUsers));
-                    localStorage.setItem('sessionUser', value);
+                    localStorage.setItem('sessionUser', JSON.stringify(userData));
                 }
-                //redirige
-                window.location.href = '/pantalla2.html';
             }else{
                 //no hay usuarios este es el primero
                 let userDate = getDate();
@@ -67,12 +66,14 @@ document.getElementById('userName').addEventListener('blur',function (){
                     "mail": value,
                     "day":userDate,
                     "time":userTime,
+                    "questions":[],
                 };
                 let arrayNewUser = [];
                 arrayNewUser.push(userDataNew);
                 localStorage.setItem('users', JSON.stringify(arrayNewUser));
-                localStorage.setItem('sessionUser', value);
+                localStorage.setItem('sessionUser', JSON.stringify(userDataNew));
             }
+            window.location.href = '/pantalla2.html';
         }else{
             document.getElementById('emailAnswer').textContent = 'Error de formato (ejemplo@mail.com)';
         }

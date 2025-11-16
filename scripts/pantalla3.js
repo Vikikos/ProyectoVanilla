@@ -5,34 +5,29 @@ function getCuestions(delay = false) {
         //si se establece delay
         delayTime = 5000;
     }
+    let resBox = document.getElementById('noQuest');
+    resBox.innerHTML='Cargando preguntas ...';
     setTimeout(() => {
         //obtenemos al user actual
-        let sessionId = localStorage.getItem('sessionId');
+        let sessionUser = JSON.parse(localStorage.getItem('sessionUser'));
         //obtenemos preguntas
-        let questions = JSON.parse(localStorage.getItem('questions'));
-        if (questions) {
+        if (sessionUser['questions'].length > 0) {
             //hay preguntas
             let table = document.getElementById('questtable');
-            let havetQuest = true;
-            questions.forEach(question => {
-                if(question['userid'] == sessionId){
-                    havetQuest =false;
-                    let text = '<tr>';
+            sessionUser['questions'].forEach(question => {
+                //las imprimimos
+                let text = '<tr>';
                     text +='<td>'+ question['question'] +'</td>';
                     text +='<td>'+ question['answer'] +'</td>';
                     text +='<td>'+ question['score'] +'</td>';
-                    text +='<td>OK</td>';
+                    text +='<td class="state">OK</td>';
                     text += '</tr>';
                     table.innerHTML += text;
-                }
             });
-            if(havetQuest){
-                //si el usuario no tiene preguntas
-                document.getElementById('noQuest').innerHTML='<td colspan="4">No tiene preguntas añadidas</td>';
-            }
+            resBox.textContent = '';
         }else{
             //no hay preguntas
-            document.getElementById('noQuest').innerHTML='<td colspan="4">No tiene preguntas añadidas</td>';
+            resBox.innerHTML='No tiene preguntas añadidas';
         }
     }, delayTime);
 }
@@ -41,7 +36,6 @@ window.addEventListener('load', getCuestions());
  
 
 // let q   = {
-//             userid: sessionid,
 //             question: string,
 //             answer:frue o false,
 //             score:0-9,

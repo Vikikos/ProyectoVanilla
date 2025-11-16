@@ -11,23 +11,46 @@ body{
 .main__formPreguntas{
     display: flex;
     flex-direction: row;
-    
-    table{
+    justify-content: space-between;
+    align-items: center;
+    width: 80vw;
+    form, table{
         border: 1px solid #7c7a7a;
+    }
+    form > div{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1em;
+    }
+    table{
+        th{
+            padding: 0.5em;
+        }
     }
 
 }
 #formUser{
     display: none;
 }
-.a__button{
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    margin: 2em;
+.button{
+margin: 2em;
     padding: 1em;
     border: 1px solid #000;
     text-decoration: none;
     color: #000;
     cursor: pointer;
+}
+#testButton{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.disabled-button{
+    background-color: #7c7a7a;
+}
+.a__button{
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
