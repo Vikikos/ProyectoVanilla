@@ -102,5 +102,5 @@ saveButton.addEventListener('click',(e)=>{
 });
 
 document.getElementById('goBackButton').addEventListener('click',()=>{
-    window.location.href = '/pantalla2.html';
+    window.location.href = 'pantalla2.html';
 })

@@ -73,7 +73,7 @@ document.getElementById('userName').addEventListener('blur',function (){
                 localStorage.setItem('users', JSON.stringify(arrayNewUser));
                 localStorage.setItem('sessionUser', JSON.stringify(userDataNew));
             }
-            window.location.href = '/pantalla2.html';
+            window.location.href = 'pantalla2.html';
         }else{
             this.select();
             document.getElementById('emailAnswer').textContent = 'Error de formato (ejemplo@mail.com)';
